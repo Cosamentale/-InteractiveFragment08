@@ -268,11 +268,13 @@ const displayShaderSource = `
     float fac =  resolution;
     uv.x *=fac;
     float my = smoothstep(0.,0.5,length(mouse.y-0.5));
+    float mx = (mouse.x-0.5);
+    float mx2 = smoothstep(0.,0.5,mx);
     float dm = my*7.;
     vec2 ug  = uv*mix(7.,14.,my);
         float d1 = 1.;
 
-        float tb =1.57*(mouse.x-0.5);
+        float tb =1.57*mx;
         float va = 0.05;float vb = 0.1;
         float a = 0.;
 
