@@ -267,11 +267,11 @@ const displayShaderSource = `
       vec2 uv = -1. + 2. * vUv;
     float fac =  resolution;
     uv.x *=fac;
-    float my = smoothstep(0.,0.5,length(mouse.y-0.5));
-    float mx = (mouse.x-0.5);
-    float mx2 = smoothstep(0.,0.5,mx);
-    float dm = my*7.;
-    vec2 ug  = uv*mix(7.,14.,my);
+    float my = clamp(length(mouse.y-0.5)*2.4,0.,1.);
+    float mx = clamp((mouse.x-0.5)*1.2,-0.5,0.5);
+    float lx = length(mx)*2.;
+    float dm = my*7.*lx;
+    vec2 ug  = uv*mix(7.,7.+lx*7.,my);
         float d1 = 1.;
 
         float tb =1.57*mx;
